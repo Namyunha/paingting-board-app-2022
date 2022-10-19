@@ -3,33 +3,37 @@ const ctx = canvas.getContext("2d");
 canvas.width = 800;
 canvas.height = 800;
 ctx.lineWidth = 2;
+let isPainting = false;
 
-const colors = [
-  "#f6e58d",
-  "#ffbe76",
-  "#ff7979",
-  "#badc58",
-  "#dff9fb",
-  "#f9ca24",
-  "#f0932b",
-  "#eb4d4b",
-  "#6ab04c",
-  "#c7ecee",
-];
+// const colors = [
+//   "#f6e58d",
+//   "#ffbe76",
+//   "#ff7979",
+//   "#badc58",
+//   "#dff9fb",
+//   "#f9ca24",
+//   "#f0932b",
+//   "#eb4d4b",
+//   "#6ab04c",
+//   "#c7ecee",
+// ];
 
-const mouseClick = (event) => {
-  moveToX = event.offsetX;
-  moveToY = event.offsetY;
-};
+function onMove(event) {
+  if (isPainting) {
+    ctx.lineTo(event.offsetX, event.offsetY);
+    ctx.stroke();
+    return;
+  }
+  ctx.moveTo(event.offsetX, event.offsetY);
+}
+function startPainting() {
+  isPainting = true;
+}
+function canclePainting() {
+  isPainting = false;
+}
 
-const mouseMove = (event) => {
-  ctx.beginPath();
-  ctx.moveTo(moveToX, moveToY);
-  const color = colors[Math.round(Math.random() * colors.length)];
-  ctx.strokeStyle = color;
-  ctx.lineTo(event.offsetX, event.offsetY);
-  ctx.stroke();
-};
-
-canvas.addEventListener("mousemove", mouseMove);
-canvas.addEventListener("click", mouseClick);
+canvas.addEventListener("mousemove", onMove);
+canvas.addEventListener("mousedown", startPainting);
+canvas.addEventListener("mouseup", canclePainting);
+canvas.addEventListener("mouseleave", canclePainting);
