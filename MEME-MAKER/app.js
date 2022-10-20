@@ -55,10 +55,10 @@ function onColorClick(event) {
 function onModeClick() {
   if (isFilling) {
     isFilling = false;
-    modeBtn.innerText = "Fill";
+    modeBtn.innerText = "✏️Fill";
   } else {
     isFilling = true;
-    modeBtn.innerText = "Draw";
+    modeBtn.innerText = "🩸Draw";
   }
 }
 
@@ -69,8 +69,20 @@ function onCanvasClick() {
 }
 
 function onDestroyClick() {
-  ctx.fillStyle = "white";
-  ctx.fillRect(0, 0, CANVAS_WIDTH, CANVAS_HEIGHT);
+  destroy();
+}
+
+function destroy() {
+  const select = prompt("정말로 그림판 전체를 삭제하시겠습니까?");
+  if (select === "yes") {
+    ctx.fillStyle = "white";
+    ctx.fillRect(0, 0, CANVAS_WIDTH, CANVAS_HEIGHT);
+  } else if (select === "네") {
+    ctx.fillStyle = "white";
+    ctx.fillRect(0, 0, CANVAS_WIDTH, CANVAS_HEIGHT);
+  }
+  {
+  }
 }
 
 function onEraserClick() {
@@ -119,7 +131,6 @@ lineWidth.addEventListener("change", onChangeWidth);
 color.addEventListener("change", onChange);
 
 colorOptions.forEach((color) => color.addEventListener("click", onColorClick));
-console.log(colorOptions);
 
 modeBtn.addEventListener("click", onModeClick);
 destroyBtn.addEventListener("click", onDestroyClick);
