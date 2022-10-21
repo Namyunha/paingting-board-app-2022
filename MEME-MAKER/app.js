@@ -1,3 +1,4 @@
+const fontBtn = document.getElementById("font-btn");
 const saveBtn = document.getElementById("save");
 const textInput = document.getElementById("text");
 const fileInput = document.getElementById("file");
@@ -21,6 +22,7 @@ ctx.lineWidth = lineWidth.value;
 ctx.lineCap = "round";
 let isPainting = false;
 let isFilling = false;
+let isFonting = false;
 
 function onMove(event) {
   if (isPainting) {
@@ -59,6 +61,17 @@ function onModeClick() {
   } else {
     isFilling = true;
     modeBtn.innerText = "🩸Draw";
+  }
+}
+function onSwitchClick(event) {
+  if (isFonting) {
+    isFonting = false;
+    fontBtn.innerText = "🖊️StrokeText";
+    ctx.stroke();
+  } else {
+    isFonting = true;
+    fontBtn.innerText = "✒️FillText";
+    ctx.fill();
   }
 }
 
@@ -107,7 +120,7 @@ function onDoubleClick(event) {
     ctx.save();
     const text = textInput.value;
     ctx.lineWidth = 1;
-    ctx.font = "68px serif";
+    ctx.font = "50px serif";
     ctx.strokeText(text, event.offsetX, event.offsetY);
     ctx.restore();
   }
@@ -137,3 +150,4 @@ destroyBtn.addEventListener("click", onDestroyClick);
 eraserBtn.addEventListener("click", onEraserClick);
 fileInput.addEventListener("change", onFileChange);
 saveBtn.addEventListener("click", onSaveClick);
+fontBtn.addEventListener("click", onSwitchClick);
