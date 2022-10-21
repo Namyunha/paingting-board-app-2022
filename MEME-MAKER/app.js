@@ -24,6 +24,8 @@ let isPainting = false;
 let isFilling = false;
 let isFonting = false;
 
+const fontTxt = fontBtn.innerText;
+
 function onMove(event) {
   if (isPainting) {
     ctx.lineTo(event.offsetX, event.offsetY);
@@ -63,18 +65,23 @@ function onModeClick() {
     modeBtn.innerText = "🩸Draw";
   }
 }
-function onSwitchClick(event) {
+function onSwitchClick() {
   if (isFonting) {
     isFonting = false;
     fontBtn.innerText = "🖊️StrokeText";
-    ctx.stroke();
   } else {
     isFonting = true;
     fontBtn.innerText = "✒️FillText";
-    ctx.fill();
   }
 }
-
+function textSwitch(event) {
+  const text = textInput.value;
+  if (isFonting) {
+    ctx.fillText(text, event.offsetX, event.offsetY);
+  } else {
+    ctx.strokeText(text, event.offsetX, event.offsetY);
+  }
+}
 function onCanvasClick() {
   if (isFilling) {
     ctx.fillRect(0, 0, CANVAS_WIDTH, CANVAS_HEIGHT);
@@ -118,10 +125,9 @@ function onFileChange() {
 function onDoubleClick(event) {
   if (text !== "") {
     ctx.save();
-    const text = textInput.value;
     ctx.lineWidth = 1;
     ctx.font = "50px serif";
-    ctx.strokeText(text, event.offsetX, event.offsetY);
+    textSwitch(event);
     ctx.restore();
   }
 }
