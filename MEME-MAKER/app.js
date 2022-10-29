@@ -10,6 +10,8 @@ const colorOptions = Array.from(
 );
 const lineWidth = document.querySelector("#line-width");
 const textWidth = document.querySelector("#text-width");
+const fontSelect = document.querySelector("#fontSelect");
+
 const canvas = document.querySelector("canvas");
 const ctx = canvas.getContext("2d");
 
@@ -98,7 +100,9 @@ function onDestroyClick() {
 }
 
 function destroy() {
-  const select = prompt("정말로 그림판 전체를 삭제하시겠습니까?");
+  const select = prompt(
+    "정말로 그림판 전체를 삭제하시겠습니까?  >>> 'yes' or '네'"
+  );
   if (select === "yes") {
     ctx.fillStyle = "white";
     ctx.fillRect(0, 0, CANVAS_WIDTH, CANVAS_HEIGHT);
@@ -128,12 +132,12 @@ function onFileChange() {
 }
 
 function onDoubleClick(event) {
-  console.log(textWidth.value);
+  console.log(fontSelect.value);
 
   if (text !== "") {
     ctx.save();
     ctx.lineWidth = `${lineWidth.value}`;
-    ctx.font = `${textWidth.value}px serif`;
+    ctx.font = `${textWidth.value}px ${fontSelect.value}`;
     textSwitch(event);
     ctx.restore();
   }

@@ -1,5 +1,7 @@
 @import "reset.css";
 @import "variable.css";
+@import url("https://fonts.googleapis.com/css2?family=Fasthand&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Raleway&display=swap");
 
 body {
   display: flex;
@@ -96,6 +98,7 @@ input#text:hover {
   color: white;
 }
 
-#fontSelect:focus {
+#fontSelect:focus,
+#fontSelect:hover {
   box-shadow: var(--btn-shadow);
 }
