@@ -85,3 +85,17 @@ input#text:focus,
 input#text:hover {
   box-shadow: var(--btn-shadow);
 }
+
+#fontSelect {
+  height: 50px;
+  width: 200px;
+  display: flex;
+  justify-content: center;
+  border-radius: 10px;
+  background-color: royalblue;
+  color: white;
+}
+
+#fontSelect:focus {
+  box-shadow: var(--btn-shadow);
+}
