@@ -9,6 +9,7 @@ const colorOptions = Array.from(
   document.getElementsByClassName("color-option")
 );
 const lineWidth = document.querySelector("#line-width");
+const textWidth = document.querySelector("#text-width");
 const canvas = document.querySelector("canvas");
 const ctx = canvas.getContext("2d");
 
@@ -44,6 +45,10 @@ function canclePainting() {
 
 function onChangeWidth(event) {
   ctx.lineWidth = event.target.value;
+}
+
+function onChangeTextWidth(event) {
+  ctx.font = event.target.value;
 }
 
 function onChange(event) {
@@ -123,10 +128,12 @@ function onFileChange() {
 }
 
 function onDoubleClick(event) {
+  console.log(textWidth.value);
+
   if (text !== "") {
     ctx.save();
-    ctx.lineWidth = 1;
-    ctx.font = "50px serif";
+    ctx.lineWidth = `${lineWidth.value}`;
+    ctx.font = `${textWidth.value}px serif`;
     textSwitch(event);
     ctx.restore();
   }
@@ -147,6 +154,7 @@ canvas.addEventListener("mouseup", canclePainting);
 canvas.addEventListener("mouseleave", canclePainting);
 canvas.addEventListener("click", onCanvasClick);
 lineWidth.addEventListener("change", onChangeWidth);
+textWidth.addEventListener("change", onChangeTextWidth);
 color.addEventListener("change", onChange);
 
 colorOptions.forEach((color) => color.addEventListener("click", onColorClick));
