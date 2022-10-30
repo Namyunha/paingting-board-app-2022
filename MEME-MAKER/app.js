@@ -27,8 +27,6 @@ let isPainting = false;
 let isFilling = false;
 let isFonting = false;
 
-const fontTxt = fontBtn.innerText;
-
 function onMove(event) {
   if (isPainting) {
     ctx.lineTo(event.offsetX, event.offsetY);
@@ -133,6 +131,7 @@ function onFileChange() {
 
 function onDoubleClick(event) {
   console.log(fontSelect.value);
+  const text = textInput.value;
 
   if (text !== "") {
     ctx.save();
