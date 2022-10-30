@@ -9,9 +9,6 @@
   </head>
   <body>
     <div id="colorLayout">
-      <div id="colorLayout__column">
-        <canvas></canvas>
-      </div>
       <div class="color-options">
         <input type="color" id="color" />
         <div
@@ -115,8 +112,12 @@
           data-color="#535c68"
         ></div>
       </div>
+      <div id="colorLayout__column">
+        <canvas></canvas>
+      </div>
     </div>
     <div class="btns">
+      <div class="volumn">font volumn</div>
       <input
         id="line-width"
         type="range"
@@ -132,7 +133,7 @@
         📂Add Photo<input type="file" accept="image/*" id="file" />
       </label>
       <button id="font-btn">🖊️StrokeText</button>
-      Font Size
+      <div class="volumn">Font Size</div>
       <input
         id="text-width"
         type="range"
@@ -142,7 +143,7 @@
         step="1"
       />
       <input type="text" id="text" placeholder="Add text here... :)" />
-      Font Select
+      <div class="volumn">Font Select</div>
       <select id="fontSelect">
         <option class="opt" value="serif">serif</option>
         <option class="opt" value="'Fasthand', cursive">Fasthand</option>
