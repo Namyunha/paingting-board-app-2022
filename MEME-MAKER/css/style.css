@@ -19,7 +19,7 @@ body {
 #colorLayout {
   display: flex;
   justify-content: space-evenly;
-  width: 1300px;
+  width: 1500px;
   height: 800px;
 }
 
@@ -53,7 +53,12 @@ canvas {
   width: 270px;
   height: 820px;
   gap: 20px;
+  padding: 10px;
+  padding-top: 50px;
   flex-wrap: wrap;
+  border: 5px solid black;
+  border-radius: 20px;
+  background: teal;
 }
 .color-option {
   width: 50px;
